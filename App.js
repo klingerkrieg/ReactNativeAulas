@@ -111,19 +111,117 @@ class HomeScreen extends Component {
 
 	</View>
 	  }*/
+
+	buscaCep(cep){
+
+
+		if (cep.length == 8){
+			
+			//com await
+			/*var func = async () => {
+				var resp = await fetch('http://ws.matheuscastiglioni.com.br/ws/cep/find/'+cep+'/json/', {
+					method: 'GET',
+					headers: {
+						Accept: 'application/json, text/plain',
+								'Content-Type': 'application/json',
+					}
+				}).catch((error) => {
+					console.error(error);
+				});
+				resp = await resp.json();
+				this.setState({endereco:resp})
+				console.log(resp);
+			}
+			func();*/
+			
+
+			//com callback
+			fetch('http://ws.matheuscastiglioni.com.br/ws/cep/find/'+cep+'/json/', {
+				method: 'GET',
+				headers: {
+					Accept: 'application/json, text/plain',
+							'Content-Type': 'application/json',
+				}
+			})
+			.then((response) => response.json())
+			.then((responseJson) => {
+				this.setState({endereco:responseJson})
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+		}
+
+	}
+
+	chamarSOAP(){
+		var soap = require('soap-everywhere');
+		var url = 'http://www.dneonline.com/calculator.asmx?wsdl';
+		var args = {intA: this.state.intA, intB: this.state.intB};
+		var tela = this
+		soap.createClient(url, function(err, client) {
+			client.Multiply(args, function(err, result) {
+				console.log(result);
+				console.log(args);
+				tela.setState({resultado:result.MultiplyResult});
+			});
+		});
+	}
+
 	
 	render(){
 		const { navigate } = this.props.navigation;
 
-		return <View onLayout={(evt) =>console.log('O Layout está pronto.')}>
-              <Title hasButton={true}>Título</Title>
+		/*return <View onLayout={(evt) =>console.log('O Layout está pronto.')}>
+			  {//<Title hasButton={true}>Título</Title>
+			  }*/
+
+		return <View>
+
+
+			  
 
 
 
 
-			  <Button color='red'
+			{/*<TextInput 
+				placeholder="Digite o primeiro número"
+				onChangeText={text => this.setState({intA:text})}
+				keyboardType="numeric"/>
+
+			<TextInput 
+				placeholder="Digite o segundo número"
+				onChangeText={text => this.setState({intB:text})}
+				keyboardType="numeric"/>
+
+			{this.state.resultado != null &&
+				<Text>Resultado:{this.state.resultado}</Text>
+			}
+
+			<Button onPress={this.chamarSOAP.bind(this)}
+					title="Multiplicar"/>
+
+
+
+			  
+			  <TextInput 
+					placeholder="Digite seu CEP"
+					onChangeText={text => this.buscaCep(text)}
+					keyboardType="numeric"
+					value="5915016" />
+
+			   {this.state.endereco != undefined &&
+			   	<View> 
+					<Text>Logradouro:{this.state.endereco.logradouro}</Text>
+					<Text>Bairro:{this.state.endereco.bairro}</Text>
+					<Text>Cidade:{this.state.endereco.cidade}</Text>
+					<Text>UF:{this.state.endereco.estado}</Text>
+				</View>
+			   }
+
+			  {/*<Button color='red'
 			  		onPress={() => navigate("Perfil", {nome:"João"}) } 
-					title="Ir para outra tela"/>
+					title="Ir para outra tela"/>*/}
 			  
 			  
 			  
