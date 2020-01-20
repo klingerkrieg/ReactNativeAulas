@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Text, View, Button, Alert, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
+import {Text, View, Button, Alert, TextInput, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
 
 //Navegacao
 import PerfilScreen from './PerfilScreen'
@@ -59,6 +59,7 @@ class HomeScreen extends Component {
       };
 	
 	state = {items:[]}
+	//state = {nome:"Betina"}
 
 	componentDidMount(){
 		var items = []
@@ -89,17 +90,40 @@ class HomeScreen extends Component {
 		  );
 	}
 
+	enviar(){
+		console.log(this.state.nome);
+	}
 
-  	render(){
-	const { navigate } = this.props.navigation;
 
-    return <View onLayout={(evt) =>console.log('O Layout está pronto.')}>
+  	/*render(){
+	return <View>
+
+		<Text>{this.state.nome}</Text>
+
+		<TextInput placeholder="Digite seu nome"
+			autoFocus={true}
+			onChangeText={text => this.setState({nome:text})}
+			keyboardType="numeric"
+			value={this.state.nome}
+			/>
+		<Button onPress={this.enviar.bind(this)}
+				title="Enviar"/>
+
+	</View>
+	  }*/
+	
+	render(){
+		const { navigate } = this.props.navigation;
+
+		return <View onLayout={(evt) =>console.log('O Layout está pronto.')}>
               <Title hasButton={true}>Título</Title>
+
+
 
 
 			  <Button color='red'
 			  		onPress={() => navigate("Perfil", {nome:"João"}) } 
-			  		title="Ir para outra tela"/>
+					title="Ir para outra tela"/>
 			  
 			  
 			  
@@ -116,7 +140,7 @@ class HomeScreen extends Component {
 									padding:10}}>{item}</Text>
 					</TouchableOpacity>
 				))}
-					</ScrollView>*/}
+					  </ScrollView>*/}
 
 			  
 
@@ -134,7 +158,7 @@ class HomeScreen extends Component {
 
 				
             </View>
-  }
+  	}
 }
 
 //No final do arquivo
