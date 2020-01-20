@@ -36,6 +36,8 @@ target 'HelloWorld' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'RealmJS', :path => '../node_modules/realm'
+
   target 'HelloWorldTests' do
     inherit! :search_paths
     # Pods for testing

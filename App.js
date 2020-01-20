@@ -21,6 +21,11 @@ import AppMenu from './AppMenu'
 import * as globalStyle from "./src/globalStyle";
 const styles = globalStyle.styles;
 
+//Persistencia
+import {AsyncStorage} from 'react-native';
+import PessoaScreen from './PessoaScreen'
+import PessoaScreenRealm from './PessoaScreenRealm'
+
 class Title extends Component {
   
   acaoBotao(){
@@ -168,6 +173,29 @@ class HomeScreen extends Component {
 		});
 	}
 
+	testeSalvar(){
+		var func = async () => {
+			try {
+				await AsyncStorage.setItem("nome", "João");
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		func();
+	}
+
+	testeRecuperar(){
+		var func = async () => {
+			try {
+				var nomeSalvo = await AsyncStorage.getItem("nome");
+				Alert.alert(nomeSalvo)
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		func();
+	}
+
 	
 	render(){
 		const { navigate } = this.props.navigation;
@@ -178,9 +206,17 @@ class HomeScreen extends Component {
 
 		return <View>
 
+			<Button onPress={this.testeSalvar.bind(this)} 
+					title="Teste salvar"/>
 
-			  
+			<Button onPress={this.testeRecuperar.bind(this)} 
+					title="Teste recuperar"/>
 
+			<Button onPress={() => navigate("Pessoas", {}) } 
+					title="Cadastro de pessoas"/>
+
+			<Button onPress={() => navigate("PessoasRealm", {}) } 
+					title="Cadastro de pessoas Realm"/>
 
 
 
@@ -262,7 +298,9 @@ class HomeScreen extends Component {
 //No final do arquivo
 const MainNavigator = createStackNavigator({
     Home: {screen: HomeScreen},
-    Perfil: {screen: PerfilScreen},
+	Perfil: {screen: PerfilScreen},
+	Pessoas: {screen: PessoaScreen},
+	PessoasRealm: {screen: PessoaScreenRealm},
 });
 
 const App = createAppContainer(MainNavigator);
