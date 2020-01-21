@@ -11,11 +11,11 @@ https://www.youtube.com/playlist?list=PLWz5rJ2EKKc8j2B95zGMb8muZvrIy-wcF
 
 * android studio
 * node-v10.18.0-win-x64
-** yarn add -g yarn
-** yarn add -g react-native-cli
-** react-native init AwesomeProject
-** react-native run-android
-** react-native start
+ * yarn add -g yarn
+ * yarn add -g react-native-cli
+ * react-native init AwesomeProject
+ * react-native run-android
+ * react-native start
 
 
 
