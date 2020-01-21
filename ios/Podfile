@@ -38,6 +38,11 @@ target 'HelloWorld' do
 
   pod 'RealmJS', :path => '../node_modules/realm'
 
+
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
   target 'HelloWorldTests' do
     inherit! :search_paths
     # Pods for testing

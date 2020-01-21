@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Text, View, Button, Alert, TextInput, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
+import {Text, View, Button, Alert,Image, TextInput, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
 
 //Navegacao
 import PerfilScreen from './PerfilScreen'
@@ -25,6 +25,13 @@ const styles = globalStyle.styles;
 import {AsyncStorage} from 'react-native';
 import PessoaScreen from './PessoaScreen'
 import PessoaScreenRealm from './PessoaScreenRealm'
+
+//Imagens
+const rick = require("./src/images/rick.jpg")
+
+//Camera
+import CameraScreen from './CameraScreen'
+import AlbumScreen from './AlbumScreen'
 
 class Title extends Component {
   
@@ -203,8 +210,15 @@ class HomeScreen extends Component {
 		/*return <View onLayout={(evt) =>console.log('O Layout está pronto.')}>
 			  {//<Title hasButton={true}>Título</Title>
 			  }*/
-
+		
 		return <View>
+
+			<Image style={{width: 100, height: 100}}
+          			source={rick} 
+				/>
+			<Image style={{width: 50, height: 50}}
+          		   source={{uri: 'https://facebook.github.io/react-native/img/tiny_logo.png'}}
+         		/>
 
 			<Button onPress={this.testeSalvar.bind(this)} 
 					title="Teste salvar"/>
@@ -217,6 +231,12 @@ class HomeScreen extends Component {
 
 			<Button onPress={() => navigate("PessoasRealm", {}) } 
 					title="Cadastro de pessoas Realm"/>
+
+			<Button onPress={() => navigate("Camera") } 
+					title="Câmera"/>
+
+			<Button onPress={() => navigate("Album") } 
+					title="Album"/>
 
 
 
@@ -301,6 +321,8 @@ const MainNavigator = createStackNavigator({
 	Perfil: {screen: PerfilScreen},
 	Pessoas: {screen: PessoaScreen},
 	PessoasRealm: {screen: PessoaScreenRealm},
+	Camera: {screen: CameraScreen},
+	Album: {screen: AlbumScreen},
 });
 
 const App = createAppContainer(MainNavigator);
