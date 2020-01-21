@@ -43,6 +43,8 @@ target 'HelloWorld' do
 
   pod 'RNFS', :path => '../node_modules/react-native-fs'
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'HelloWorldTests' do
     inherit! :search_paths
     # Pods for testing

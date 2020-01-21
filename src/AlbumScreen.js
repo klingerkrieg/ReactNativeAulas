@@ -29,7 +29,7 @@ class AlbumScreen extends Component  {
     render(){
         return <ScrollView >
             {this.state.lista.map((item, i) => (
-              <Image style={{width: 360, height: 200, marginBottom:10}}
+              <Image key={i} style={{width: 360, height: 200, marginBottom:10}}
                      source={{uri:item}} />
             ))}
             </ScrollView>

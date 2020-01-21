@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
 class PessoaScreenRealm extends Component {
     static navigationOptions = {
-		title: 'Cadastro de pessoas',
+		title: 'Cadastro de pessoas Realm',
 	};
 
     state = {nome:"",fone:"", lista:[]}
@@ -47,16 +47,17 @@ class PessoaScreenRealm extends Component {
 
     salvar(){
         //captura a ultima id
-        var lastId = realm.objects('Pessoa').sorted("nome",false)[0]
+        var lastId = realm.objects('Pessoa').sorted("id",true)[0]
         if (lastId == undefined){
             lastId = 0
         } else {
             lastId = lastId.id
         }
+        console.log(lastId)
         //salva
         realm.write(() => {
             var savedPerson = realm.create('Pessoa', {
-                id: lastId + 1,
+                id: (lastId + 1),
                 nome: this.state.nome,
                 fone: parseInt(this.state.fone),
             });
