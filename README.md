@@ -110,6 +110,15 @@ https://www.npmjs.com/package/react-native-cheerio
 
 
 #### Scrapping
+
+Tanto com fetch como com XMLHttpRequest é preciso adicionar no AndroidManifest.xml
+
+    <application>
+      ...
+      android:usesCleartextTraffic="true"
+
+Parsers
+
     yarn add buffer css-select dom-serializer entities htmlparser2-without-node-native lodash react-native-parse-html
     yarn add react-native-cheerio htmlparser2 events stream util
 https://www.npmjs.com/package/react-native-cheerio
