@@ -11,8 +11,8 @@ https://www.youtube.com/playlist?list=PLWz5rJ2EKKc8j2B95zGMb8muZvrIy-wcF
 
 * android studio
 * node-v10.18.0-win-x64
-  * yarn add -g yarn
-  * yarn add -g react-native-cli
+  * npm i -g react-native-cli
+  * npm i -g yarn
   * react-native init AwesomeProject
   * react-native run-android
   * react-native start
@@ -132,7 +132,9 @@ https://facebook.github.io/react-native/docs/signed-apk-android#adding-signing-c
     react-native run-android --variant=release
 
 Quando nao estiver compilando porque nao consegue criar diretorios
-    cd android && gradlew clean
+
+    cd android
+    gradlew clean
 	
 ##### Logcat
     adb logcat | FIND /I "alertamultas" 
